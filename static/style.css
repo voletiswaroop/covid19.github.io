@@ -1,6 +1,6 @@
 @font-face {
   font-family: GothamHTF;
-  src: url(../media/GothamHTF-Book.fae9356a.woff);
+  src: url(GothamHTF-Book.fae9356a.woff);
   font-weight: 400;
   font-style: normal
 }
@@ -22,7 +22,7 @@
 .corona-wrapper {
   max-width: 1280px;
   margin: 50px auto;
-  width: 95%;
+  width: 95%
 }
 
 .corona-wrapper h1 {
@@ -254,23 +254,22 @@ footer * {
   color: #fff
 }
 
+.author a {
+  float: left;
+  text-decoration: none
+}
+
 footer a {
   float: right
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif
-}
-
 @media screen and (max-width:768px) {
   .corona-wrapper .corona-item {
-    margin-left: 10px;
+    margin-left: 10px
   }
   .corona-wrapper .total-cases p {
     min-width: 190px;
-    margin: 10px 0;
+    margin: 10px 0
   }
   .corona-wrapper .total-cases {
     -ms-flex-direction: column;
@@ -279,10 +278,10 @@ body {
   .corona-wrapper .corona-item .corona-cases-citywise *, .corona-wrapper .corona-item .corona-cases-statewise * {
     padding: 2%;
     overflow: hidden;
-    word-break: break-word;
+    word-break: break-word
   }
   .corona-wrapper .corona-item.show-details .corona-cases-citywise-list {
-    margin: 15px;
+    margin: 15px
   }
   .corona-wrapper .corona-item .corona-cases-statewise .new-cases {
     float: none;
@@ -290,11 +289,17 @@ body {
     width: 100%
   }
   .corona-wrapper .total-cases .latest-update {
-    top: -30px;
+    top: -30px
   }
   footer {
     padding: 15px 5%;
     width: auto;
-    z-index: 1;
+    z-index: 1
   }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif
 }
