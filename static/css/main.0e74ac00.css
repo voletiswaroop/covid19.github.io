@@ -28,7 +28,7 @@
 .corona-wrapper h1 {
   font-size: 30px;
   text-align: center;
-  margin-bottom: 40px
+  margin-bottom: 60px
 }
 
 .corona-wrapper .total-cases {
@@ -42,16 +42,9 @@
   position: relative
 }
 
-@media screen and (max-width:768px) {
-  .corona-wrapper .total-cases {
-    -ms-flex-direction: column;
-    flex-direction: column
-  }
-}
-
 .corona-wrapper .total-cases .latest-update {
   position: absolute;
-  top: -65px;
+  top: -50px;
   right: 0;
   color: red
 }
@@ -141,13 +134,6 @@
   position: relative
 }
 
-@media screen and (max-width:768px) {
-  .corona-wrapper .corona-item {
-    width: 82%;
-    left: 28px
-  }
-}
-
 .corona-wrapper .corona-item:nth-child(odd) .corona-cases-statewise {
   background-color: #f7f7f7
 }
@@ -185,14 +171,6 @@
 .corona-wrapper .corona-item .corona-cases-citywise *, .corona-wrapper .corona-item .corona-cases-statewise * {
   width: 25%;
   padding: 10px 0 10px 10px
-}
-
-@media screen and (max-width:768px) {
-  .corona-wrapper .corona-item .corona-cases-citywise *, .corona-wrapper .corona-item .corona-cases-statewise * {
-    padding: 2%;
-    overflow: hidden;
-    word-break: break-all
-  }
 }
 
 .corona-wrapper .corona-item .corona-cases-citywise .show-citiwise-list, .corona-wrapper .corona-item .corona-cases-statewise .show-citiwise-list {
@@ -233,14 +211,6 @@
   font-weight: 700;
   padding: 8px 25px 0 0;
   float: right
-}
-
-@media screen and (max-width:768px) {
-  .corona-wrapper .corona-item .corona-cases-statewise .new-cases {
-    float: none;
-    display: block;
-    width: 100%
-  }
 }
 
 .corona-wrapper .corona-item .corona-cases-statewise .new-cases:before {
@@ -288,17 +258,43 @@ footer a {
   float: right
 }
 
-@media screen and (max-width:768px) {
-  footer {
-    padding: 15px 5%;
-    width: 80%
-  }
-}
-
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif
 }
 
-/*# sourceMappingURL=main.0e74ac00.css.map*/
+@media screen and (max-width:768px) {
+  .corona-wrapper .corona-item {
+    margin-left: 10px;
+  }
+  .corona-wrapper .total-cases p {
+    min-width: 190px;
+    margin: 10px 0;
+  }
+  .corona-wrapper .total-cases {
+    -ms-flex-direction: column;
+    flex-direction: column
+  }
+  .corona-wrapper .corona-item .corona-cases-citywise *, .corona-wrapper .corona-item .corona-cases-statewise * {
+    padding: 2%;
+    overflow: hidden;
+    word-break: break-word;
+  }
+  .corona-wrapper .corona-item.show-details .corona-cases-citywise-list {
+    margin: 15px;
+  }
+  .corona-wrapper .corona-item .corona-cases-statewise .new-cases {
+    float: none;
+    display: block;
+    width: 100%
+  }
+  .corona-wrapper .total-cases .latest-update {
+    top: -30px;
+  }
+  footer {
+    padding: 15px 5%;
+    width: auto;
+    z-index: 1;
+  }
+}
