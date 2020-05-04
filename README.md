@@ -1,6 +1,6 @@
 # COVID19 project
 
-This Reactjs website shows the statistics of coronavirus cases in India.
+This Reactjs project is all about showing the statistics of coronavirus cases in India.
 
 Visit COVID19 simple and interactive website here: https://voletiswaroop.github.io/covid19
 
