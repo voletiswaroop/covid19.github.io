@@ -1,6 +1,22 @@
+.page-wrapper {
+  margin-top: 50px
+}
+
+.corona-graph {
+  margin: 50px 0;
+  padding: 2% 2% 0;
+  box-shadow: 0 0 5px 3px hsla(0, 0%, 85%, .5);
+  max-width: 96%;
+  overflow: hidden
+}
+
+.corona-graph>div {
+  margin-bottom: 50px
+}
+
 @font-face {
   font-family: GothamHTF;
-  src: url(GothamHTF-Book.fae9356a.woff);
+  src: url(../media/GothamHTF-Book.fae9356a.woff);
   font-weight: 400;
   font-style: normal
 }
@@ -21,7 +37,7 @@
 
 .corona-wrapper {
   max-width: 1280px;
-  margin: 50px auto;
+  margin: 50px auto 70px;
   width: 95%
 }
 
@@ -120,18 +136,26 @@
   font-weight: bolder
 }
 
-.corona-wrapper .total-cases+.corona-item {
+.corona-wrapper .corona-item {
+  position: relative
+}
+
+.corona-wrapper .corona-items-heading {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  background: inherit;
   z-index: 1;
   box-shadow: 0 3px 4px 1px hsla(0, 0%, 85%, .5);
   border: 0!important
 }
 
-.corona-wrapper .corona-item {
-  position: relative
+.corona-wrapper .corona-items-heading .corona-cases-statewise {
+  background: #4169e1!important;
+  color: #fff
+}
+
+.corona-wrapper .corona-items-heading * {
+  font-weight: 700
 }
 
 .corona-wrapper .corona-item:nth-child(odd) .corona-cases-statewise {
@@ -165,7 +189,9 @@
 .corona-wrapper .corona-item .corona-cases-citywise, .corona-wrapper .corona-item .corona-cases-statewise {
   display: -ms-flexbox;
   display: flex;
-  overflow: hidden
+  overflow: hidden;
+  -ms-flex-align: center;
+  align-items: center
 }
 
 .corona-wrapper .corona-item .corona-cases-citywise *, .corona-wrapper .corona-item .corona-cases-statewise * {
@@ -247,6 +273,7 @@ footer {
   background: green;
   padding: 15px 20px;
   left: 0;
+  z-index: 1;
   right: 0
 }
 
@@ -293,8 +320,7 @@ footer a {
   }
   footer {
     padding: 15px 5%;
-    width: auto;
-    z-index: 1
+    width: auto
   }
 }
 
@@ -303,3 +329,5 @@ body {
   padding: 0;
   font-family: sans-serif
 }
+
+/*# sourceMappingURL=main.370c8684.css.map*/
