@@ -1,15 +1,3 @@
-.corona-graph {
-  margin: 50px 0;
-  padding: 2% 2% 0;
-  box-shadow: 0 0 5px 3px hsla(0, 0%, 85%, .5);
-  max-width: 96%;
-  overflow: hidden
-}
-
-.corona-graph>div {
-  margin-bottom: 50px
-}
-
 @font-face {
   font-family: GothamHTF;
   src: url(../media/GothamHTF-Book.fae9356a.woff);
@@ -29,6 +17,69 @@
   letter-spacing: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale
+}
+
+.loader {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 9;
+  background: #fff;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center
+}
+
+.loader>div {
+  background-color: #333;
+  height: 25%;
+  width: 6px;
+  margin-left: 5px;
+  animation: sk-stretchdelay 1.2s infinite ease-in-out
+}
+
+.loader .rect2 {
+  animation-delay: -1.1s
+}
+
+.loader .rect3 {
+  animation-delay: -1s
+}
+
+.loader .rect4 {
+  animation-delay: -.9s
+}
+
+.loader .rect5 {
+  animation-delay: -.8s
+}
+
+@keyframes sk-stretchdelay {
+  0%, 40%, to {
+    transform: scaleY(.4);
+    -webkit-transform: scaleY(.4)
+  }
+  20% {
+    transform: scaleY(1);
+    -webkit-transform: scaleY(1)
+  }
+}
+
+.corona-graph {
+  margin: 50px 0;
+  padding: 2% 2% 0;
+  box-shadow: 0 0 5px 3px hsla(0, 0%, 85%, .5);
+  max-width: 96%;
+  overflow: hidden
+}
+
+.corona-graph>div {
+  margin-bottom: 50px
 }
 
 a {
@@ -386,4 +437,4 @@ body {
   font-family: sans-serif
 }
 
-/*# sourceMappingURL=main.92b979d3.css.map*/
+/*# sourceMappingURL=main.e2b924c7.css.map*/
