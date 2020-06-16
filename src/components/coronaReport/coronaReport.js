@@ -94,10 +94,12 @@ export default class coronaReport extends Component {
           <div className="rect2"></div>
           <div className="rect3"></div>
           <div className="rect4"></div>
-          <div className="rect5"></div></div> :
+          <div className="rect5"></div>
+        </div> :
         <React.Fragment>
           <div className="corona-wrapper" >
             <div className="corona-container">
+              <h1>COVID19 Stats in India</h1>
               {totalCases}
               <CovidStateChart />
               <div className="corona-items-list">

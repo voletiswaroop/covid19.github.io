@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import CanvasJSReact from './canvasjs.react';
 import axios from 'axios'
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+import logo from './logo.png'
+
+let CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 export default class coronaReportStateGraph extends Component {
 	constructor() {
@@ -173,7 +175,7 @@ export default class coronaReportStateGraph extends Component {
 		return (
 			<React.Fragment>
 				<header>
-					<h1><a href="">COVID19 Stats in India</a></h1>
+					<a href="https://voletiswaroop.github.io/"><img src={logo} alt="Swaroop gupta voleti" /></a>
 					<div className="right-section">
 						{totalTestedCases}
 						{percentageCases}
@@ -193,7 +195,7 @@ export default class coronaReportStateGraph extends Component {
 						onRef={ref => this.chart = ref}
 					/>
 				</div >
-			</React.Fragment>
+			</React.Fragment >
 		);
 	}
 }

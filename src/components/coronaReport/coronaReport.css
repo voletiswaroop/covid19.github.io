@@ -123,13 +123,17 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  padding: 20px 45px 20px 20px;
+  padding: 10px 45px 10px 0;
   z-index: 1;
   background: #fff;
   box-shadow: 0 0 5px 3px hsla(0, 0%, 85%, .5);
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+header img {
+  height: 50px;
 }
 
 header * {
@@ -139,19 +143,17 @@ header * {
   margin-left: 20px;
 }
 
-header h1 a {
-  font-size: 25px;
+h1 {
+  font-size: 35px;
   margin: 0;
   font-weight: normal;
-}
-
-header h1 a:hover {
-  text-decoration: none;
+  margin-bottom: 50px;
+  text-align: center;
 }
 
 .corona-wrapper {
   max-width: 1280px;
-  margin: 150px auto 30px;
+  margin: 100px auto 30px;
   width: 95%;
 }
 
