@@ -60,7 +60,7 @@ export default class coronaReportStateGraph extends Component {
 				label: itemdata.state
 			})
 		})
-		this.state.totalDayWiseCase && this.state.totalDayWiseCase.slice(34).map(item => {
+		this.state.totalDayWiseCase && this.state.totalDayWiseCase.slice(60).map(item => {
 			dayWiseConfirm.push({
 				y: parseInt(item.dailyconfirmed),
 				label: item.date

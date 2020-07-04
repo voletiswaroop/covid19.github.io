@@ -62,19 +62,27 @@
 }
 
 @-webkit-keyframes sk-stretchdelay {
-  0%, 40%, 100% {
+
+  0%,
+  40%,
+  100% {
     -webkit-transform: scaleY(0.4)
   }
+
   20% {
     -webkit-transform: scaleY(1.0)
   }
 }
 
 @keyframes sk-stretchdelay {
-  0%, 40%, 100% {
+
+  0%,
+  40%,
+  100% {
     transform: scaleY(0.4);
     -webkit-transform: scaleY(0.4);
   }
+
   20% {
     transform: scaleY(1.0);
     -webkit-transform: scaleY(1.0);
@@ -101,7 +109,9 @@ a:hover {
   text-decoration: underline;
 }
 
-.total-cases, .corona-graph, .corona-items-list {
+.total-cases,
+.corona-graph,
+.corona-items-list {
   animation-duration: .45s;
   animation-fill-mode: both;
   animation-name: fadeInUp;
@@ -112,6 +122,7 @@ a:hover {
     opacity: 0;
     transform: translateY(20px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -255,7 +266,7 @@ h1 {
   top: 0;
   z-index: 1;
   box-shadow: 0 3px 4px 1px hsla(0, 0%, 85%, .5);
-  border: 0!important
+  border: 0 !important
 }
 
 .corona-wrapper .corona-items-heading .corona-cases-statewise {
@@ -295,19 +306,22 @@ h1 {
   display: none
 }
 
-.corona-wrapper .corona-item .corona-cases-citywise, .corona-wrapper .corona-item .corona-cases-statewise {
+.corona-wrapper .corona-item .corona-cases-citywise,
+.corona-wrapper .corona-item .corona-cases-statewise {
   display: -ms-flexbox;
   display: flex;
   overflow: hidden;
   align-items: center;
 }
 
-.corona-wrapper .corona-item .corona-cases-citywise *, .corona-wrapper .corona-item .corona-cases-statewise * {
+.corona-wrapper .corona-item .corona-cases-citywise *,
+.corona-wrapper .corona-item .corona-cases-statewise * {
   width: 25%;
   padding: 10px 0 10px 10px
 }
 
-.corona-wrapper .corona-item .corona-cases-citywise .show-citiwise-list, .corona-wrapper .corona-item .corona-cases-statewise .show-citiwise-list {
+.corona-wrapper .corona-item .corona-cases-citywise .show-citiwise-list,
+.corona-wrapper .corona-item .corona-cases-statewise .show-citiwise-list {
   cursor: pointer;
   position: absolute;
   width: 10px;
@@ -315,7 +329,8 @@ h1 {
   top: 0
 }
 
-.corona-wrapper .corona-item .corona-cases-citywise .show-citiwise-list:before, .corona-wrapper .corona-item .corona-cases-statewise .show-citiwise-list:before {
+.corona-wrapper .corona-item .corona-cases-citywise .show-citiwise-list:before,
+.corona-wrapper .corona-item .corona-cases-statewise .show-citiwise-list:before {
   transition: all .3s ease;
   content: "";
   border-color: inherit;
@@ -401,38 +416,67 @@ footer a {
 
 @media screen and (max-width:800px) {
   .corona-wrapper {
-    margin: 170px auto 30px;
+    margin: 160px auto 30px;
   }
 }
 
 @media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    padding: 7px 20px 0px;
+    text-align: center;
+  }
+
+  header * {
+    float: none;
+    margin: 0 0 10px;
+    display: block;
+  }
+
+  header>a {
+    margin: 0;
+  }
+
+  header .total-percenage-cases {
+    display: flex;
+    margin: 0;
+  }
+
   .corona-wrapper .corona-item {
     margin-left: 10px
   }
+
   .corona-wrapper .total-cases p {
     min-width: 190px;
     margin: 10px 0
   }
+
   .corona-wrapper .total-cases {
     -ms-flex-direction: column;
     flex-direction: column
   }
-  .corona-wrapper .corona-item .corona-cases-citywise *, .corona-wrapper .corona-item .corona-cases-statewise * {
+
+  .corona-wrapper .corona-item .corona-cases-citywise *,
+  .corona-wrapper .corona-item .corona-cases-statewise * {
     padding: 2%;
     overflow: hidden;
     word-break: break-word
   }
+
   .corona-wrapper .corona-item.show-details .corona-cases-citywise-list {
     margin: 15px
   }
+
   .corona-wrapper .corona-item .corona-cases-statewise .new-cases {
     float: none;
     display: block;
     width: 100%
   }
+
   .corona-wrapper .total-cases .latest-update {
     top: -30px
   }
+
   footer {
     padding: 15px 5%;
     width: auto;
