@@ -38,11 +38,15 @@ export default class coronaReport extends Component {
     let totalCases = this.state.totalStateWiseCase && this.state.totalStateWiseCase.slice(0, 1).map((item, index) => {
       return (
         <div className="total-cases" key={index}>
-          <p className="active"><span>Active</span>{item.active}</p> <span>+</span>
-          <p className="recovered"><span>Recovered</span>{item.recovered}<sub className="new-cases">{item.deltarecovered}</sub></p> <span>+</span>
-          <p className="deceased"><span>Deceased</span>{item.deaths}<sub className="new-cases">{item.deltadeaths}</sub></p> <span>=</span>
-          <p className="confirmed"><span>Confirmed cases</span>{item.confirmed}<sub className="new-cases">{item.deltaconfirmed}</sub></p>
+          <div>
+            <p className="active"><span>Active Cases</span>{parseInt(item.active).toLocaleString()}</p> <span>+</span>
+            <p className="recovered"><span>Recovered</span>{parseInt(item.recovered).toLocaleString()}<sub className="new-cases">{parseInt(item.deltarecovered).toLocaleString()}</sub></p> <span>+</span>
+          </div>
+          <div>
+            <p className="deceased"><span>Deceased</span>{parseInt(item.deaths).toLocaleString()}<sub className="new-cases">{parseInt(item.deltadeaths).toLocaleString()}</sub></p> <span>=</span>
+            <p className="confirmed"><span>Confirmed cases</span>{parseInt(item.confirmed).toLocaleString()}<sub className="new-cases">{parseInt(item.deltaconfirmed).toLocaleString()}</sub></p></div>
           <div className="latest-update">Latest update: {item.lastupdatedtime}</div>
+
         </div>
       )
     })
@@ -50,10 +54,10 @@ export default class coronaReport extends Component {
       return (
         <div className="corona-item" key={index}>
           <div className="corona-cases-statewise">
-            <h2 className="corona-cases-statename">{item.state === 'Total' ? 'India' : item.state}</h2>
-            <p className="corona-cases-confirmed">{item.confirmed} {item.deltaconfirmed > 0 ? <sub className="new-cases">{item.deltaconfirmed}</sub> : ''}</p>
-            <p className="corona-cases-recovered">{item.recovered}{item.deltarecovered > 0 ? <sub className="new-cases">{item.deltarecovered}</sub> : ''}</p>
-            <p className="corona-cases-deceased">{item.deaths} {item.deltadeaths > 0 ? <sub className="new-cases">{item.deltadeaths}</sub> : ''}</p>
+            <h2 className="corona-cases-statename" onClick={(e) => this.showCitiwiseDetails(e)}>{item.state === 'Total' ? 'India' : item.state}</h2>
+            <p className="corona-cases-confirmed">{parseInt(item.confirmed).toLocaleString()} {item.deltaconfirmed > 0 ? <sub className="new-cases">{parseInt(item.deltaconfirmed).toLocaleString()}</sub> : ''}</p>
+            <p className="corona-cases-recovered">{parseInt(item.recovered).toLocaleString()}{item.deltarecovered > 0 ? <sub className="new-cases">{parseInt(item.deltarecovered).toLocaleString()}</sub> : ''}</p>
+            <p className="corona-cases-deceased">{parseInt(item.deaths).toLocaleString()} {item.deltadeaths > 0 ? <sub className="new-cases">{item.deltadeaths}</sub> : ''}</p>
             <p className="show-citiwise-list" onClick={(e) => this.showCitiwiseDetails(e)}></p>
           </div>
           {Object.values(this.state.totalCityWiseCase).map((itemdata, index) => {
@@ -63,17 +67,20 @@ export default class coronaReport extends Component {
                   <div className="corona-cases-citywise-list">
                     <div className="corona-cases-citywise">
                       <p className="corona-cases-cityname">City</p>
+                      <p className="corona-cases-confirmed">Positives <br />last 24 Hrs</p>
                       <p className="corona-cases-confirmed">Confirmed</p>
                       <p className="corona-cases-recovered">Recovered</p>
                       <p className="corona-cases-deceased">Deceased</p>
                     </div>
                     {itemdata && Object.entries(itemdata.districtData).map((state, index) => {
+                      console.log(state[1], 'state[1]');
                       return (
                         <div className="corona-cases-citywise" key={index}>
                           <p className="corona-cases-cityname">{state[0]}</p>
-                          <p className="corona-cases-confirmed">{state[1].confirmed}</p>
-                          <p className="corona-cases-recovered">{state[1].recovered}</p>
-                          <p className="corona-cases-deceased">{state[1].deceased}</p>
+                          <p className="corona-cases-confirmed-last">{state[1].delta.confirmed.toLocaleString()}</p>
+                          <p className="corona-cases-confirmed">{state[1].confirmed.toLocaleString()}</p>
+                          <p className="corona-cases-recovered">{state[1].recovered.toLocaleString()}</p>
+                          <p className="corona-cases-deceased">{state[1].deceased.toLocaleString()}</p>
                         </div>
                       )
                     })}

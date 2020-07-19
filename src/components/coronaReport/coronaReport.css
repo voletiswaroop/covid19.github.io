@@ -39,6 +39,7 @@
   margin-left: 5px;
   -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
   animation: sk-stretchdelay 1.2s infinite ease-in-out;
+  border-radius: 15px;
 }
 
 .loader .rect2 {
@@ -169,13 +170,7 @@ h1 {
 }
 
 .corona-wrapper .total-cases {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin-bottom: 30px;
-  -ms-flex-align: center;
-  align-items: center;
   position: relative
 }
 
@@ -183,12 +178,21 @@ h1 {
   position: absolute;
   top: -50px;
   right: 0;
-  color: red
+  color: red;
+  width: auto;
+}
+
+.corona-wrapper .total-cases>div {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  justify-content: space-around;
+
 }
 
 .corona-wrapper .total-cases p {
   border-radius: 10px;
-  padding: 25px;
+  padding: 15px 15px 35px;
   color: #fff;
   font-weight: bolder;
   font-size: 25px;
@@ -202,12 +206,19 @@ h1 {
   background-color: #ff8c00
 }
 
+.corona-cases-statename {
+  cursor: pointer;
+}
+
+.corona-wrapper .corona-item .corona-cases-citywise .corona-cases-confirmed-last,
 .corona-wrapper .total-cases p.confirmed sub {
-  color: #ff8c00
+  color: #ff8c00;
+  font-weight: bold;
 }
 
 .corona-wrapper .total-cases p.active {
-  background-color: #dc143c
+  background-color: #dc143c;
+  padding: 25px 15px;
 }
 
 .corona-wrapper .total-cases p.deceased {
@@ -240,6 +251,7 @@ h1 {
   font-weight: 700
 }
 
+.corona-wrapper .corona-item .corona-cases-citywise .corona-cases-confirmed-last:before,
 .corona-wrapper .total-cases p sub:before {
   content: "";
   border-color: inherit;
@@ -345,7 +357,7 @@ h1 {
 
 .corona-wrapper .corona-item.show-details .corona-cases-citywise-list {
   display: block;
-  margin: 30px;
+  margin: 30px 15px;
   padding: 10px;
   text-align: center
 }
@@ -416,14 +428,15 @@ footer a {
 
 @media screen and (max-width:800px) {
   .corona-wrapper {
-    margin: 160px auto 30px;
+    margin: 145px auto 30px;
   }
 }
 
 @media screen and (max-width: 768px) {
+
   header {
     flex-direction: column;
-    padding: 7px 20px 0px;
+    padding: 7px 15px 0px;
     text-align: center;
   }
 
@@ -433,6 +446,10 @@ footer a {
     display: block;
   }
 
+  .right-section {
+    width: 100%;
+  }
+
   header>a {
     margin: 0;
   }
@@ -440,37 +457,83 @@ footer a {
   header .total-percenage-cases {
     display: flex;
     margin: 0;
+    justify-content: space-between;
+  }
+
+  h1 {
+    font-size: 30px;
   }
 
   .corona-wrapper .corona-item {
     margin-left: 10px
   }
 
+  .corona-wrapper .total-cases>div {
+    width: 100%;
+  }
+
+  .corona-wrapper .total-cases p+span {
+    display: none;
+  }
+
   .corona-wrapper .total-cases p {
-    min-width: 190px;
-    margin: 10px 0
+    min-width: 150px;
+    margin: 10px 0;
+    font-size: 22px;
+  }
+
+  .corona-wrapper .total-cases p span {
+    font-size: 17px;
   }
 
   .corona-wrapper .total-cases {
-    -ms-flex-direction: column;
-    flex-direction: column
+    flex-direction: column;
+    margin-bottom: 20px;
   }
+
+  .corona-graph>div {
+    margin-bottom: 20px;
+  }
+
+  .corona-graph {
+    margin: 0 0 20px;
+  }
+
 
   .corona-wrapper .corona-item .corona-cases-citywise *,
   .corona-wrapper .corona-item .corona-cases-statewise * {
-    padding: 2%;
+    padding: 10px 5px;
     overflow: hidden;
-    word-break: break-word
+    word-break: break-word;
+    font-size: 14px;
+  }
+
+  .corona-wrapper .corona-item .corona-cases-statewise .show-citiwise-list {
+    left: -20px;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+
+  .corona-wrapper .corona-item.show-details .show-citiwise-list {
+    top: 10px;
+    transform: translate(0, 0);
+  }
+
+  .corona-wrapper .corona-item .corona-cases-citywise * {
+    padding: 10px 0px;
+    font-size: 12px;
   }
 
   .corona-wrapper .corona-item.show-details .corona-cases-citywise-list {
-    margin: 15px
+    margin: 15px 0;
+    padding: 0;
   }
 
-  .corona-wrapper .corona-item .corona-cases-statewise .new-cases {
+  .corona-wrapper .corona-item .corona-cases-statewise .new-cases,
+  .corona-wrapper .corona-item .corona-cases-citywise .corona-cases-confirmed .new-cases {
     float: none;
     display: block;
-    width: 100%
+    width: auto
   }
 
   .corona-wrapper .total-cases .latest-update {
