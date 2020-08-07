@@ -15,12 +15,12 @@ export default class coronaReport extends Component {
   componentDidMount() {
 
     axios.all([
-      axios.get('https://covid19api.io/api/v1/IndiaCasesByStates'),
+      axios.get('https://api.covid19india.org/data.json'),
       axios.get('https://api.covid19india.org/state_district_wise.json')
     ]).then(axios.spread((stateData, cityWiseData) => {
       this.setState({
         loader: false,
-        totalStateWiseCase: stateData.data.data[0].table,
+        totalStateWiseCase: stateData.data.statewise,
         totalCityWiseCase: cityWiseData.data
       })
     }));
