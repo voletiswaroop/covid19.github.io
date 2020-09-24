@@ -50,7 +50,8 @@ export default class coronaReport extends Component {
         </div>
       )
     })
-    let coronaData = this.state.totalStateWiseCase && this.state.totalStateWiseCase.slice(1).map((item, index) => {
+    let coronaData = this.state.totalStateWiseCase && this.state.totalStateWiseCase.slice(1, -2).map((item, index) => {
+      let latestConfirmedCases = item.deltaconfirmed
       return (
         <div className="corona-item" key={index}>
           <div className="corona-cases-statewise">
@@ -67,7 +68,7 @@ export default class coronaReport extends Component {
                   <div className="corona-cases-citywise-list">
                     <div className="corona-cases-citywise">
                       <p className="corona-cases-cityname">City</p>
-                      <p className="corona-cases-confirmed">Positives <br />last 24 Hrs</p>
+                      {latestConfirmedCases > 0 ? <p className="corona-cases-confirmed">Positives <br />last 24 Hrs</p> : ''}
                       <p className="corona-cases-confirmed">Confirmed</p>
                       <p className="corona-cases-recovered">Recovered</p>
                       <p className="corona-cases-deceased">Deceased</p>
@@ -77,7 +78,8 @@ export default class coronaReport extends Component {
                       return (
                         <div className="corona-cases-citywise" key={index}>
                           <p className="corona-cases-cityname">{state[0]}</p>
-                          <p className="corona-cases-confirmed-last">{state[1].delta.confirmed.toLocaleString()}</p>
+                          {latestConfirmedCases > 0 ? state[1].delta.confirmed > 0 ?
+                            <p className="corona-cases-confirmed-last">{state[1].delta.confirmed.toLocaleString()}</p> : <p></p> : ''}
                           <p className="corona-cases-confirmed">{state[1].confirmed.toLocaleString()}</p>
                           <p className="corona-cases-recovered">{state[1].recovered.toLocaleString()}</p>
                           <p className="corona-cases-deceased">{state[1].deceased.toLocaleString()}</p>
