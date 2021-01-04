@@ -48,31 +48,33 @@ export default class coronaReportStateGraph extends Component {
 		})
 		this.state.totalStateWiseCase && this.state.totalStateWiseCase.slice(1, 16).map(itemdata => {
 			dataPointsStateActive.push({
-				y: parseInt(itemdata.confirmed),
+				y: parseInt(itemdata.confirmed, 10),
 				label: itemdata.state
 			})
 			dataPointsStateRecovered.push({
-				y: parseInt(itemdata.recovered),
+				y: parseInt(itemdata.recovered, 10),
 				label: itemdata.state
 			})
 			dataPointsStateDeceased.push({
-				y: parseInt(itemdata.deaths),
+				y: parseInt(itemdata.deaths, 10),
 				label: itemdata.state
 			})
+			return null;
 		})
 		this.state.totalDayWiseCase && this.state.totalDayWiseCase.slice(60).map(item => {
 			dayWiseConfirm.push({
-				y: parseInt(item.dailyconfirmed),
+				y: parseInt(item.dailyconfirmed, 10),
 				label: item.date
 			})
 			dayWiseRecovered.push({
-				y: parseInt(item.dailyrecovered),
+				y: parseInt(item.dailyrecovered, 10),
 				label: item.date
 			})
 			dayWiseDeceased.push({
-				y: parseInt(item.dailydeceased),
+				y: parseInt(item.dailydeceased, 10),
 				label: item.date
 			})
+			return null;
 		})
 		totalTestedCases = this.state.totalTested && this.state.totalTested.slice(testCasesLength).map((item, index) => {
 			return (<a href={item.source} title="source" target="_blank" className="total-test-cases" key={index}>Total test cases: {item.totalsamplestested}</a>)
