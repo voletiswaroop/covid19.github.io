@@ -39,25 +39,26 @@ export default class coronaReport extends Component {
       return (
         <div className="total-cases" key={index}>
           <div>
-            <p className="active"><span>Active Cases</span>{parseInt(item.active).toLocaleString()}</p> <span>+</span>
-            <p className="recovered"><span>Recovered</span>{parseInt(item.recovered).toLocaleString()}<sub className="new-cases">{parseInt(item.deltarecovered).toLocaleString()}</sub></p> <span>+</span>
+            <p className="active"><span>Active Cases</span>{parseInt(item.active, 10).toLocaleString()}</p> <span>+</span>
+            <p className="recovered"><span>Recovered</span>{parseInt(item.recovered, 10).toLocaleString()}<sub className="new-cases">{parseInt(item.deltarecovered, 10).toLocaleString()}</sub></p> <span>+</span>
           </div>
           <div>
-            <p className="deceased"><span>Deceased</span>{parseInt(item.deaths).toLocaleString()}<sub className="new-cases">{parseInt(item.deltadeaths).toLocaleString()}</sub></p> <span>=</span>
-            <p className="confirmed"><span>Confirmed cases</span>{parseInt(item.confirmed).toLocaleString()}<sub className="new-cases">{parseInt(item.deltaconfirmed).toLocaleString()}</sub></p></div>
+            <p className="deceased"><span>Deceased</span>{parseInt(item.deaths, 10).toLocaleString()}<sub className="new-cases">{parseInt(item.deltadeaths, 10).toLocaleString()}</sub></p> <span>=</span>
+            <p className="confirmed"><span>Confirmed cases</span>{parseInt(item.confirmed, 10).toLocaleString()}<sub className="new-cases">{parseInt(item.deltaconfirmed, 10).toLocaleString()}</sub></p></div>
           <div className="latest-update">Latest update: {item.lastupdatedtime}</div>
 
         </div>
       )
     })
-    let coronaData = this.state.totalStateWiseCase && this.state.totalStateWiseCase.slice(1).map((item, index) => {
+    let coronaData = this.state.totalStateWiseCase && this.state.totalStateWiseCase.slice(1, -2).map((item, index) => {
+      let latestConfirmedCases = item.deltaconfirmed
       return (
         <div className="corona-item" key={index}>
           <div className="corona-cases-statewise">
             <h2 className="corona-cases-statename" onClick={(e) => this.showCitiwiseDetails(e)}>{item.state === 'Total' ? 'India' : item.state}</h2>
-            <p className="corona-cases-confirmed">{parseInt(item.confirmed).toLocaleString()} {item.deltaconfirmed > 0 ? <sub className="new-cases">{parseInt(item.deltaconfirmed).toLocaleString()}</sub> : ''}</p>
-            <p className="corona-cases-recovered">{parseInt(item.recovered).toLocaleString()}{item.deltarecovered > 0 ? <sub className="new-cases">{parseInt(item.deltarecovered).toLocaleString()}</sub> : ''}</p>
-            <p className="corona-cases-deceased">{parseInt(item.deaths).toLocaleString()} {item.deltadeaths > 0 ? <sub className="new-cases">{item.deltadeaths}</sub> : ''}</p>
+            <p className="corona-cases-confirmed">{parseInt(item.confirmed, 10).toLocaleString()} {item.deltaconfirmed > 0 ? <sub className="new-cases">{parseInt(item.deltaconfirmed, 10).toLocaleString()}</sub> : ''}</p>
+            <p className="corona-cases-recovered">{parseInt(item.recovered, 10).toLocaleString()}{item.deltarecovered > 0 ? <sub className="new-cases">{parseInt(item.deltarecovered, 10).toLocaleString()}</sub> : ''}</p>
+            <p className="corona-cases-deceased">{parseInt(item.deaths, 10).toLocaleString()} {item.deltadeaths > 0 ? <sub className="new-cases">{item.deltadeaths}</sub> : ''}</p>
             <p className="show-citiwise-list" onClick={(e) => this.showCitiwiseDetails(e)}></p>
           </div>
           {Object.values(this.state.totalCityWiseCase).map((itemdata, index) => {
@@ -67,17 +68,18 @@ export default class coronaReport extends Component {
                   <div className="corona-cases-citywise-list">
                     <div className="corona-cases-citywise">
                       <p className="corona-cases-cityname">City</p>
-                      <p className="corona-cases-confirmed">Positives <br />last 24 Hrs</p>
+                      {latestConfirmedCases > 0 ? <p className="corona-cases-confirmed">Positives <br />last 24 Hrs</p> : ''}
                       <p className="corona-cases-confirmed">Confirmed</p>
                       <p className="corona-cases-recovered">Recovered</p>
                       <p className="corona-cases-deceased">Deceased</p>
                     </div>
-                    {itemdata && Object.entries(itemdata.districtData).map((state, index) => {
-                      console.log(state[1], 'state[1]');
+                    {Object.entries(itemdata.districtData).map((state, index) => {
+                      // console.log(state[1], 'state[1]');
                       return (
                         <div className="corona-cases-citywise" key={index}>
                           <p className="corona-cases-cityname">{state[0]}</p>
-                          <p className="corona-cases-confirmed-last">{state[1].delta.confirmed.toLocaleString()}</p>
+                          {latestConfirmedCases > 0 ? state[1].delta.confirmed > 0 ?
+                            <p className="corona-cases-confirmed-last">{state[1].delta.confirmed.toLocaleString()}</p> : <p></p> : ''}
                           <p className="corona-cases-confirmed">{state[1].confirmed.toLocaleString()}</p>
                           <p className="corona-cases-recovered">{state[1].recovered.toLocaleString()}</p>
                           <p className="corona-cases-deceased">{state[1].deceased.toLocaleString()}</p>
@@ -94,7 +96,7 @@ export default class coronaReport extends Component {
     })
 
     return (
-      this.state.loader && this.state.loader ?
+      this.state.loader ?
         <div className="loader">
           <p> Loading Covid19 webapp....</p>
           <div className="rect1"></div>
@@ -122,7 +124,6 @@ export default class coronaReport extends Component {
               </div>
             </div>
           </div>
-
           <footer>
             <span className="author"><a href="https://voletiswaroop.github.io/">&copy; Swaroop Gupta Voleti</a></span>
             <span className="source"><a href="https://www.covid19india.org/" target="_blank">Source</a></span>
