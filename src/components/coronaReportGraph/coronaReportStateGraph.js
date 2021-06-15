@@ -3,7 +3,7 @@ import CanvasJSReact from './canvasjs.react';
 import axios from 'axios'
 import logo from './logo.png'
 
-let CanvasJSChart = CanvasJSReact.CanvasJSChart;
+const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 export default class coronaReportStateGraph extends Component {
 	constructor() {
@@ -25,6 +25,7 @@ export default class coronaReportStateGraph extends Component {
 		}
 		this.chart.render();
 	}
+
 	componentDidMount() {
 		axios.get('https://api.covid19india.org/data.json').then(stateData => {
 			this.setState({
@@ -36,8 +37,9 @@ export default class coronaReportStateGraph extends Component {
 	}
 
 	render() {
-		let dataPointsStateActive = [], dataPointsStateRecovered = [], dataPointsStateDeceased = [], dayWiseConfirm = [], dayWiseRecovered = [], dayWiseDeceased = [], totalTestedCases, testCasesLength = this.state.totalTested.length - 1
-		let percentageCases = this.state.totalStateWiseCase && this.state.totalStateWiseCase.slice(0, 1).map((item, index) => {
+		const dataPointsStateActive = [], dataPointsStateRecovered = [], dataPointsStateDeceased = [], dayWiseConfirm = [], dayWiseRecovered = [], dayWiseDeceased = [], testCasesLength = this.state.totalTested.length - 1;
+		let totalTestedCases
+		const percentageCases = this.state.totalStateWiseCase && this.state.totalStateWiseCase.slice(0, 1).map((item, index) => {
 			return (
 				<div className="total-percenage-cases" key={index}>
 					<p className="deceased">Deceased: {Number((item.deaths / item.confirmed) * 100).toFixed(2) + '%'}</p>
@@ -77,99 +79,99 @@ export default class coronaReportStateGraph extends Component {
 			return null;
 		})
 		totalTestedCases = this.state.totalTested && this.state.totalTested.slice(testCasesLength).map((item, index) => {
-			return (<a href={item.source} title="source" target="_blank" className="total-test-cases" key={index}>Total test cases: {item.totalsamplestested}</a>)
+			return (<a href={item.source} title="source" target="_blank" className="total-test-cases" key={index}>Total tests conducted: {parseInt(item.totalsamplestested, 10).toLocaleString()}</a>)
 		})
-		const options = {
-			animationEnabled: true,
-			colorSet: "colorSet2",
-			title: {
-				text: "Top 15 COVID19 States",
-				fontFamily: "GothamHTF"
-			},
-			toolTip: {
-				shared: true
-			},
-			legend: {
-				cursor: "pointer",
-				itemclick: this.toggleDataSeries,
-				verticalAlign: "top",
-				fontFamily: "GothamHTF"
-			},
-			data: [{
-				type: "spline",
-				name: "Confirmed cases",
-				showInLegend: true,
-				yValueFormatString: "##0",
-				fontFamily: "GothamHTF",
-				dataPoints: dataPointsStateActive
-			}, {
-				type: "spline",
-				name: "Recovered",
-				showInLegend: true,
-				yValueFormatString: "###0",
-				fontFamily: "GothamHTF",
-				dataPoints: dataPointsStateRecovered
-			}, {
-				type: "splineArea",
-				name: "Deceased",
-				markerBorderColor: "white",
-				markerBorderThickness: 2,
-				yValueFormatString: "###0",
-				fontFamily: "GothamHTF",
-				showInLegend: true,
-				dataPoints: dataPointsStateDeceased
-			}]
-		}
+		// const options = {
+		// 	animationEnabled: true,
+		// 	colorSet: "colorSet2",
+		// 	title: {
+		// 		text: "Top 15 COVID19 States",
+		// 		fontFamily: "GothamHTF"
+		// 	},
+		// 	toolTip: {
+		// 		shared: true
+		// 	},
+		// 	legend: {
+		// 		cursor: "pointer",
+		// 		itemclick: this.toggleDataSeries,
+		// 		verticalAlign: "top",
+		// 		fontFamily: "GothamHTF"
+		// 	},
+		// 	data: [{
+		// 		type: "spline",
+		// 		name: "Confirmed cases",
+		// 		showInLegend: true,
+		// 		yValueFormatString: "##0",
+		// 		fontFamily: "GothamHTF",
+		// 		dataPoints: dataPointsStateActive
+		// 	}, {
+		// 		type: "spline",
+		// 		name: "Recovered",
+		// 		showInLegend: true,
+		// 		yValueFormatString: "###0",
+		// 		fontFamily: "GothamHTF",
+		// 		dataPoints: dataPointsStateRecovered
+		// 	}, {
+		// 		type: "splineArea",
+		// 		name: "Deceased",
+		// 		markerBorderColor: "white",
+		// 		markerBorderThickness: 2,
+		// 		yValueFormatString: "###0",
+		// 		fontFamily: "GothamHTF",
+		// 		showInLegend: true,
+		// 		dataPoints: dataPointsStateDeceased
+		// 	}]
+		// }
 		const confirmCases = {
 			animationEnabled: true,
 			title: {
-				text: "Confirmed cases",
+				text: "Daily Confirmed cases",
 				fontFamily: "GothamHTF"
 			},
-			legend: {
-				verticalAlign: "top",
-				fontFamily: "GothamHTF"
-			},
+			// legend: {
+			// 	verticalAlign: "top",
+			// 	fontFamily: "GothamHTF"
+			// },
 			data: [{
 				type: "column",
 				name: "Confirmed cases",
-				showInLegend: true,
+				showInLegend: false,
 				dataPoints: dayWiseConfirm
 			}]
 		}
 		const recoveredCases = {
 			animationEnabled: true,
 			title: {
-				text: "Recovered cases",
+				text: "Daily Recovered cases",
 				fontFamily: "GothamHTF"
 			},
-			legend: {
-				verticalAlign: "top",
-				fontFamily: "GothamHTF"
-			},
+			// legend: {
+			// 	verticalAlign: "top",
+			// 	fontFamily: "GothamHTF"
+			// },
 			data: [{
 				type: "spline",
 				name: "Recovered cases",
-				showInLegend: true,
+				showInLegend: false,
 				dataPoints: dayWiseRecovered
 			}]
 		}
 		const deceasedCases = {
 			animationEnabled: true,
 			title: {
-				text: "Deceased cases",
+				text: "Daily Deceased cases",
 				fontFamily: "GothamHTF"
 			},
-			legend: {
-				verticalAlign: "top",
-				fontFamily: "GothamHTF"
-			},
+			// legend: {
+			// 	verticalAlign: "top",
+			// 	fontFamily: "GothamHTF"
+			// },
 			data: [{
 				type: "spline",
 				name: "Deceased",
 				markerBorderColor: "white",
 				markerBorderThickness: 2,
-				showInLegend: true,
+				showInLegend: false,
 				dataPoints: dayWiseDeceased
 			}]
 		}
@@ -184,19 +186,25 @@ export default class coronaReportStateGraph extends Component {
 					</div>
 				</header>
 				<div className="corona-graph">
-					<CanvasJSChart options={options}
+					{/* <CanvasJSChart options={options}
 						onRef={ref => this.chart = ref}
-					/>
-					<CanvasJSChart options={confirmCases}
-						onRef={ref => this.chart = ref}
-					/>
-					<CanvasJSChart options={recoveredCases}
-						onRef={ref => this.chart = ref}
-					/>
-					<CanvasJSChart options={deceasedCases}
-						onRef={ref => this.chart = ref}
-					/>
-				</div >
+					/> */}
+					<div>
+						<CanvasJSChart options={confirmCases}
+							onRef={ref => this.chart = ref}
+						/>
+					</div>
+					<div>
+						<CanvasJSChart options={recoveredCases}
+							onRef={ref => this.chart = ref}
+						/>
+					</div>
+					<div>
+						<CanvasJSChart options={deceasedCases}
+							onRef={ref => this.chart = ref}
+						/>
+					</div>
+				</div>
 			</React.Fragment >
 		);
 	}
