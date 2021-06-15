@@ -62,19 +62,6 @@
   animation-delay: -0.8s;
 }
 
-@-webkit-keyframes sk-stretchdelay {
-
-  0%,
-  40%,
-  100% {
-    -webkit-transform: scaleY(0.4)
-  }
-
-  20% {
-    -webkit-transform: scaleY(1.0)
-  }
-}
-
 @keyframes sk-stretchdelay {
 
   0%,
@@ -90,16 +77,12 @@
   }
 }
 
-.corona-graph {
-  margin: 50px 0;
-  padding: 2% 2% 0;
+.corona-graph>div {
+  margin: 20px 0;
+  padding: 10px;
   box-shadow: 0 0 5px 3px hsla(0, 0%, 85%, .5);
   max-width: 96%;
   overflow: hidden;
-}
-
-.corona-graph>div {
-  margin-bottom: 50px;
 }
 
 a {
@@ -187,7 +170,6 @@ h1 {
   align-items: center;
   width: 50%;
   justify-content: space-around;
-
 }
 
 .corona-wrapper .total-cases p {
@@ -290,26 +272,17 @@ h1 {
   font-weight: bold;
 }
 
+.corona-wrapper .corona-item:nth-child(2n) .corona-cases-citywise-list,
 .corona-wrapper .corona-item:nth-child(odd) .corona-cases-statewise {
   background-color: #f7f7f7
 }
 
+.corona-wrapper .corona-item:nth-child(2n),
 .corona-wrapper .corona-item:nth-child(odd) .corona-cases-citywise-list {
   background-color: #fff
 }
 
-.corona-wrapper .corona-item:nth-child(odd) .corona-cases-citywise-list .corona-cases-citywise {
-  border-bottom: 3px solid #f7f7f7
-}
-
-.corona-wrapper .corona-item:nth-child(2n) {
-  background-color: #fff
-}
-
-.corona-wrapper .corona-item:nth-child(2n) .corona-cases-citywise-list {
-  background-color: #f7f7f7
-}
-
+.corona-wrapper .corona-item:nth-child(odd) .corona-cases-citywise-list .corona-cases-citywise,
 .corona-wrapper .corona-item:nth-child(2n) .corona-cases-citywise-list .corona-cases-citywise {
   border-bottom: 3px solid #fff
 }
@@ -320,7 +293,6 @@ h1 {
 
 .corona-wrapper .corona-item .corona-cases-citywise,
 .corona-wrapper .corona-item .corona-cases-statewise {
-  display: -ms-flexbox;
   display: flex;
   overflow: hidden;
   align-items: center;
@@ -350,7 +322,6 @@ h1 {
   border-style: solid;
   display: inline-block;
   padding: 3px;
-  -ms-transform: rotate(-45deg);
   transform: rotate(-45deg);
   margin-right: 5px
 }
@@ -426,13 +397,10 @@ footer a {
   float: right
 }
 
-@media screen and (max-width:800px) {
+@media screen and (max-width: 768px) {
   .corona-wrapper {
     margin: 145px auto 30px;
   }
-}
-
-@media screen and (max-width: 768px) {
 
   header {
     flex-direction: column;
@@ -461,7 +429,8 @@ footer a {
   }
 
   h1 {
-    font-size: 30px;
+    font-size: 25px;
+    margin-bottom: 30px;
   }
 
   .corona-wrapper .corona-item {
@@ -478,17 +447,29 @@ footer a {
 
   .corona-wrapper .total-cases p {
     min-width: 150px;
-    margin: 10px 0;
-    font-size: 22px;
+    margin: 10px 0 5px;
+    font-size: 20px;
+    padding: 10px 14px;
+  }
+
+  .corona-wrapper .total-cases p.active {
+    padding: 10px 15px;
+  }
+
+  .corona-wrapper .total-cases p sub {
+    float: right;
+    margin: 2px 0 0 10px;
+    position: static;
   }
 
   .corona-wrapper .total-cases p span {
-    font-size: 17px;
+    font-size: 15px;
+    margin-bottom: 5px;
   }
 
   .corona-wrapper .total-cases {
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 
   .corona-graph>div {
@@ -498,7 +479,6 @@ footer a {
   .corona-graph {
     margin: 0 0 20px;
   }
-
 
   .corona-wrapper .corona-item .corona-cases-citywise *,
   .corona-wrapper .corona-item .corona-cases-statewise * {
@@ -537,11 +517,30 @@ footer a {
   }
 
   .corona-wrapper .total-cases .latest-update {
-    top: -30px
+    top: -21px;
+    font-size: 13px;
   }
 
   footer {
     padding: 15px 5%;
     width: auto;
+  }
+}
+
+@media screen and (max-width:480px) {
+  header * {
+    font-size: 13px;
+  }
+
+  .corona-cases-confirmed {
+    display: none;
+  }
+
+  header img {
+    height: 35px;
+  }
+
+  .corona-wrapper {
+    margin: 120px auto 30px;
   }
 }
