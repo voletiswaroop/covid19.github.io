@@ -1,7 +1,8 @@
 {
   "name": "covid19-india",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "private": true,
+  "proxy": "https://data.covid19india.org",
   "homepage": "https://voletiswaroop.github.io/covid19",
   "author": {
     "name": "Swaroop Gupta Voleti"
@@ -15,7 +16,7 @@
     "react-dom": "^16.13.1",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "0.9.5"
+    "react-scripts": "^4.0.3"
   },
   "devDependencies": {
     "gh-pages": "^2.2.0"
@@ -27,5 +28,17 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
