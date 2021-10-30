@@ -1,8 +1,22 @@
 {
-  "main.css": "static/css/main.afdc27cd.css",
-  "main.css.map": "static/css/main.afdc27cd.css.map",
-  "main.js": "static/js/main.f25010a1.js",
-  "main.js.map": "static/js/main.f25010a1.js.map",
-  "static/media/GothamHTF-Book.woff": "static/media/GothamHTF-Book.fae9356a.woff",
-  "static/media/logo.png": "static/media/logo.6df88bfa.png"
+  "files": {
+    "main.css": "/covid19/static/css/main.585643d7.chunk.css",
+    "main.js": "/covid19/static/js/main.58e898c6.chunk.js",
+    "main.js.map": "/covid19/static/js/main.58e898c6.chunk.js.map",
+    "runtime-main.js": "/covid19/static/js/runtime-main.b2248c46.js",
+    "runtime-main.js.map": "/covid19/static/js/runtime-main.b2248c46.js.map",
+    "static/js/2.4913fec7.chunk.js": "/covid19/static/js/2.4913fec7.chunk.js",
+    "static/js/2.4913fec7.chunk.js.map": "/covid19/static/js/2.4913fec7.chunk.js.map",
+    "index.html": "/covid19/index.html",
+    "static/css/main.585643d7.chunk.css.map": "/covid19/static/css/main.585643d7.chunk.css.map",
+    "static/js/2.4913fec7.chunk.js.LICENSE.txt": "/covid19/static/js/2.4913fec7.chunk.js.LICENSE.txt",
+    "static/media/coronaReport.css": "/covid19/static/media/GothamHTF-Book.b115ab97.woff",
+    "static/media/logo.cab72412.png": "/covid19/static/media/logo.cab72412.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b2248c46.js",
+    "static/js/2.4913fec7.chunk.js",
+    "static/css/main.585643d7.chunk.css",
+    "static/js/main.58e898c6.chunk.js"
+  ]
 }
