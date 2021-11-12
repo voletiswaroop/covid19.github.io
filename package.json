@@ -1,8 +1,6 @@
 {
   "name": "covid19-india",
   "version": "1.1.0",
-  "private": true,
-  "proxy": "https://data.covid19india.org",
   "homepage": "https://voletiswaroop.github.io/covid19",
   "author": {
     "name": "Swaroop Gupta Voleti"
@@ -33,7 +31,8 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "not ie <= 11"
     ],
     "development": [
       "last 1 chrome version",

@@ -27,7 +27,7 @@ export default class coronaReportStateGraph extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('/data.json').then(stateData => {
+		axios.get('https://data.covid19india.org/data.json').then(stateData => {
 			this.setState({
 				totalDayWiseCase: stateData.data.cases_time_series,
 				totalStateWiseCase: stateData.data.statewise,
