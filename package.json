@@ -6,7 +6,7 @@
     "name": "Swaroop Gupta Voleti"
   },
   "dependencies": {
-    "axios": "^0.22.0",
+    "axios": "^1.6.4",
     "bootstrap": "^4.3.1",
     "jquery": "^3.3.1",
     "react": "^16.13.1",
